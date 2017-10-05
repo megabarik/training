@@ -15,15 +15,28 @@ public class PassengersCount {
         System.out.print("Сколько вы хотите забронировать билетов? - ");
         Scanner sc = new Scanner(System.in);
         while(!sc.hasNextInt()){
-            if (!sc.hasNextInt()) {
-                System.out.println("Вы ввели не цифру!");
-                System.out.print("Введите цифру направления: ");
-                sc = new Scanner(System.in);
-            }
-
+            System.out.println("Вы ввели не цифру!");
+            System.out.print("Введите цифру направления: ");
+            sc = new Scanner(System.in);
         }
         int countTickets = sc.nextInt();
-        Price setPrice = new Price();
-        setPrice.outPrice(destination,numberTime,countTickets, count);
+        checkFreetickets(countTickets, count, destination, numberTime);
+
     }
+    public void checkFreetickets(int countTickets, int count, int destination, int numberTime){
+        while(countTickets > count){
+            System.out.println(5);
+            System.out.println("Количество заказанных билетов превышает количество доступных мест.");
+            System.out.println("По вашему направлению свободно: " + count + " мест.");
+            System.out.print("Введите другое количество мест: ");
+            Scanner sc = new Scanner(System.in);
+            sc = new Scanner(System.in);
+            countTickets = sc.nextInt();
+        }
+        Price setPrice = new Price();
+        setPrice.outPrice(destination,numberTime,countTickets);
+    }
+
+
+
 }
